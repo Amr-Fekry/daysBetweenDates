@@ -6,12 +6,31 @@
 
 
 
-## 1.3- understand the relationship between inputs and outputs by working out some examples. 
+## 2- think about how to systematically solve the problem as a human:
 
-##      function(inputs) -> output
-        
-##      daysBetweenDates(2012, 12, 7, 2012, 12, 7) -> 0 
-##      daysBetweenDates(2012, 12, 7, 2012, 12, 8) -> 1
-##      daysBetweenDates(2012, 12, 8, 2012, 12, 7) -> undefined (error message: date 1 is after date 2)
-##      daysBetweenDates(2012, 6, 29, 2013, 6, 29) -> 365
-##      daysBetweenDates(2012, 6, 29, 2013, 6, 31) -> undefined (error message: June is 30 days)
+##    2.a work through a few cases in a systematic way as a human.
+##        daysBetweenDates(2013,1,24,2013,6,29)
+##        daysBetweenDates(2013,1,24,2024,6,29)
+
+##    2.b write a "pseudo code" algorithm that systematizes how you solved the problem as a human.
+
+##    algorithm pseudo code:
+
+##    days = no. of days in month1 - day1 (31-24=7)
+##    month1 += 1
+##    while month1 < month2:
+##        days += no. of days in month1
+##        month1 += 1
+##    days += day2
+##    while year1 < year2:
+##        days += days in year1
+##        year1 += 1
+
+##    2.c decide whether you should implement this algorithm?
+##        No. it is already complex and it doesn't handle all the cases
+##        it doesn't handle:
+##        - input dates in same month
+##        -  month2 < month1, year2 > year1
+##        -  counting days in leap years
+
+##        we should try to find a simpler way (simple, mechanical solution)
