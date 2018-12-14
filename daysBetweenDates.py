@@ -6,21 +6,13 @@
 
 
 
-## 1.1- what are the inputs?
+## 1.2- what are the outputs?
 
-## 1.1.a- understand the possible valid inputs:
+## what is the meaningful output assuming the inputs are valid? 
+## check what the problem states, and if not clear enough, make the best guess.
 
-##      problem states "Given your birthday and the current date" -> {{inputs}} in general: two dates 
-##      what are the {{valid inputs}}: (use or make assumptions)
-##      * using assumption: "Assume that the birthday and current date are correct dates (and no time travel)" 
-##                           -> second date must not be before first date
-##      * making assumption: "Assume the dates are valid in the Gregorian calender"
-##                           -> both dates are after 15 oct 1582
+## problem states "calculate your age in days" 
+## -> best output: return a number giving the number of days between the first date and the second date.
 
-##      Although program assumptions are requirements for the user to satisfy, 
-##      we should be smart and account for users mistakes and use {{defensive programming}} by checking for the assumptions in our code. 
-
-## 1.1.2- decide how to represent inputs:
-
-##      passing them as separate values or grouping/backaging them into objects? up to you.
-##      -> we will go with: (year1,month1,day1,year2,month2,day2)
+## for definsive programming, what are the outputs for cases where the inputs are not valid?
+## be creative writing error messages for the user.
