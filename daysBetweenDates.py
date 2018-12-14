@@ -6,13 +6,12 @@
 
 
 
-## 1.2- what are the outputs?
+## 1.3- understand the relationship between inputs and outputs by working out some examples. 
 
-## what is the meaningful output assuming the inputs are valid? 
-## check what the problem states, and if not clear enough, make the best guess.
-
-## problem states "calculate your age in days" 
-## -> best output: return a number giving the number of days between the first date and the second date.
-
-## for definsive programming, what are the outputs for cases where the inputs are not valid?
-## be creative writing error messages for the user.
+##      function(inputs) -> output
+        
+##      daysBetweenDates(2012, 12, 7, 2012, 12, 7) -> 0 
+##      daysBetweenDates(2012, 12, 7, 2012, 12, 8) -> 1
+##      daysBetweenDates(2012, 12, 8, 2012, 12, 7) -> undefined (error message: date 1 is after date 2)
+##      daysBetweenDates(2012, 6, 29, 2013, 6, 29) -> 365
+##      daysBetweenDates(2012, 6, 29, 2013, 6, 31) -> undefined (error message: June is 30 days)
