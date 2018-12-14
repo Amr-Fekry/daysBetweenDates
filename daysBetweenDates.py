@@ -6,31 +6,24 @@
 
 
 
-## 2- think about how to systematically solve the problem as a human:
+## 3- find a simple mechanical solution:
 
-##    2.a work through a few cases in a systematic way as a human.
+##    3.a work through a few cases.
 ##        daysBetweenDates(2013,1,24,2013,6,29)
 ##        daysBetweenDates(2013,1,24,2024,6,29)
 
-##    2.b write a "pseudo code" algorithm that systematizes how you solved the problem as a human.
+##    3.b write a "pseudo code" algorithm:
 
-##    algorithm pseudo code:
+##    days = 0
+##    while date1 is before date2:
+##        days += 1
+##        date1 = advance to next day
 
-##    days = no. of days in month1 - day1 (31-24=7)
-##    month1 += 1
-##    while month1 < month2:
-##        days += no. of days in month1
-##        month1 += 1
-##    days += day2
-##    while year1 < year2:
-##        days += days in year1
-##        year1 += 1
+##    simple mechanical solutions are not practical for humans because they will be very time/effort-consuming
+##    but they are great for computers which are super fast
 
-##    2.c decide whether you should implement this algorithm?
-##        No. it is already complex and it doesn't handle all the cases
-##        it doesn't handle:
-##        - input dates in same month
-##        -  month2 < month1, year2 > year1
-##        -  counting days in leap years
+##    simple-mechanical solution is easier to write correctly, and saves developer's time and effort but slower on the large scale usage. 
+##    complex-shortcut-human solution is faster but it consumes more time and effort to write.
+##    depending on the future use of the program, make your trade off between speed and developers time/effort consumed.
 
-##        we should try to find a simpler way (simple, mechanical solution)
+##    bottomline: don't optimize prematurely. go with the simple mechanical solution and don't worry about making the algorithm faster until you have to.
