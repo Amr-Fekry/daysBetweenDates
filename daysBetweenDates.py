@@ -17,7 +17,6 @@
 ##        date1 = advance to next day 
 
 ## a- write nextDay(year,month,day) function to solve "advance to next day" part of the pseudo code for simple case:
-
 def nextDay(year,month,day):
 	"""takes the date of a day and returns the date of the next day (SIMPLE version that assumes all months are 30 days)"""
 
@@ -30,20 +29,36 @@ def nextDay(year,month,day):
 			year += 1
 	return year, month, day
 
-'''
-## instructor solution:
-def nextDay(year,month,day):
-	""""""
-	if day < 30:
-		return year, month, day + 1
-	elif month < 12:
-		return year, month + 1, 1
-	else:
-		return year + 1, 1, 1
-'''
+## b.1 define a helper function dateIsBefore() to evaluate the loop condition "date1 is before date2":  
+def dateIsBefore(year1,month1,day1,year2,month2,day2):
+	"""takes two dates and returns True/False depending on whether first date is before the second"""
 
-## testing
-print nextDay(1992, 10, 1) # (1992, 10, 2)
-print nextDay(1999, 12, 30) # (2000, 1, 1)
-print nextDay(2013, 1, 30) # (2013, 2, 1)
-print nextDay(2012, 12, 30) # (2013, 1, 1)
+	if (year1 < year2) or (year1 == year2 and month1 < month2) or (year1 == year2 and month1 == month2 and day1 < day2):
+		return True
+	return False
+
+## b- define daysBetweenDates(year1,month1,day1,year2,month2,day2) to give approximate answers:
+def daysBetweenDates(year1,month1,day1,year2,month2,day2):
+	"""takes two dates and returns the number of days between them"""
+
+	days = 0
+	while dateIsBefore(year1,month1,day1,year2,month2,day2):
+		days += 1
+		year1,month1,day1 = nextDay(year1,month1,day1)
+	return days
+
+
+## testing daysBetweenDates():
+def test():
+    test_cases = [((2012,9,30,2012,10,30),30), 
+                  ((2012,1,1,2013,1,1),360),
+                  ((2012,9,1,2012,9,4),3)]
+    
+    for (args, answer) in test_cases:
+        result = daysBetweenDates(*args)
+        if result != answer:
+            print "Test with data:", args, "failed"
+        else:
+            print "Test case passed!"
+
+test()
