@@ -41,6 +41,10 @@ def dateIsBefore(year1,month1,day1,year2,month2,day2):
 def daysBetweenDates(year1,month1,day1,year2,month2,day2):
 	"""takes two dates and returns the number of days between them"""
 
+	# assert date1 is before date2 and they are valid dates in Gregorian calendar
+	assert not dateIsBefore(year2,month2,day2,year1,month1,day1)
+	assert not dateIsBefore(year1,month1,day1,1582,10,15)
+
 	days = 0
 	while dateIsBefore(year1,month1,day1,year2,month2,day2):
 		days += 1
@@ -62,3 +66,7 @@ def test():
             print "Test case passed!"
 
 test()
+
+# test assertions:
+#print daysBetweenDates(1500,1,1,2000,1,1)
+#print daysBetweenDates(2001,1,1,2000,1,1)
