@@ -16,12 +16,19 @@
 ##        days += 1
 ##        date1 = advance to next day 
 
+
+## c- write stub daysInMonth(year,month) that always return 30
+def daysInMonth(year,month):
+	""""""
+	return 30
+
+## c.2 modify nextDay() to use daysInMonth()
 ## a- write nextDay(year,month,day) function to solve "advance to next day" part of the pseudo code for simple case:
 def nextDay(year,month,day):
 	"""takes the date of a day and returns the date of the next day (SIMPLE version that assumes all months are 30 days)"""
 
 	day += 1
-	if day > 30:
+	if day > daysInMonth(year,month):
 		day = 1
 		month += 1
 		if month > 12:
@@ -52,21 +59,14 @@ def daysBetweenDates(year1,month1,day1,year2,month2,day2):
 	return days
 
 
-## testing daysBetweenDates():
+## testing daysInMonth() using nextDay():
 def test():
-    test_cases = [((2012,9,30,2012,10,30),30), 
-                  ((2012,1,1,2013,1,1),360),
-                  ((2012,9,1,2012,9,4),3)]
-    
-    for (args, answer) in test_cases:
-        result = daysBetweenDates(*args)
-        if result != answer:
-            print "Test with data:", args, "failed"
-        else:
-            print "Test case passed!"
+	"""tests with 30-day months"""
+	assert nextDay(2013,1,1) == (2013,1,2)
+	assert nextDay(2013,4,30) == (2013,5,1)
+	assert nextDay(2012,12,31) == (2013,1,1)
+	assert daysBetweenDates(2013,1,1,2013,1,1) == 0
+	assert daysBetweenDates(2013,1,1,2013,1,2) == 1
+	print "done"
 
 test()
-
-# test assertions:
-#print daysBetweenDates(1500,1,1,2000,1,1)
-#print daysBetweenDates(2001,1,1,2000,1,1)
