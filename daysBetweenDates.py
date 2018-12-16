@@ -32,10 +32,13 @@ def isLeapYear(year):
 		return False
 
 
+## f- modify daysInMonth() to account for leap years
 ## d- modify daysInMonth() to be correct except for leap years
 ## c- write stub daysInMonth(year,month) that always return 30
 def daysInMonth(year,month):
 	"""return the number of days in a given month"""
+	if isLeapYear(year) and month == 2:
+		return 29
 	daysOfMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 	return daysOfMonths[month - 1]
 
@@ -76,11 +79,38 @@ def daysBetweenDates(year1,month1,day1,year2,month2,day2):
 	return days
 
 
-## testing isLeapYear():
+## testing modified daysInMonth():
+def test():
+	"""tests with 30-day months"""
+	assert daysBetweenDates(2013,1,1,2013,1,1) == 0
+	assert daysBetweenDates(2013,1,1,2013,1,2) == 1
+	assert nextDay(2013,1,1) == (2013,1,2)
+	assert nextDay(2013,4,30) == (2013,5,1)
+	assert nextDay(2012,12,31) == (2013,1,1)
+	assert nextDay(2012,12,30) == (2012,12,31)
+	assert nextDay(2013,2,28) == (2013,3,1)
+	assert nextDay(2012,2,28) == (2012,2,29)
+	assert nextDay(2013,9,30) == (2013,10,1)
+	assert daysBetweenDates(2012,1,1,2013,1,1) == 366
+	assert daysBetweenDates(2013,1,1,2014,1,1) == 365
 
-print isLeapYear(4)
-print isLeapYear(80)
-print isLeapYear(100)
-print isLeapYear(300)
-print isLeapYear(1200)
-print isLeapYear(1204)
+	print "done"
+
+test()
+
+## final testing:
+def test2():
+    test_cases = [((2012,1,1,2012,2,28), 58), 
+                  ((2012,1,1,2012,3,1), 60),
+                  ((2011,6,30,2012,6,30), 366),
+                  ((2011,1,1,2012,8,8), 585 ),
+                  ((1900,1,1,1999,12,31), 36523)]
+    
+    for (args, answer) in test_cases:
+        result = daysBetweenDates(*args)
+        if result != answer:
+            print "Test with data:", args, "failed"
+        else:
+            print "Test case passed!"
+
+test2()
